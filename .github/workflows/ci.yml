@@ -42,5 +42,5 @@ jobs:
       working-directory: ./cypress-web-tests
 
     - name: Executar Testes de UI
-      run: npm run cy:ui-regression
+      run: npm run cy:run
       working-directory: ./cypress-web-tests
