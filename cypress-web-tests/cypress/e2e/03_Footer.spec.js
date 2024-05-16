@@ -6,10 +6,10 @@ describe('Header Page', () => {
         cy.openApp()
     });
     describe('Footer Buttons - Social Media', () => {
-        it('Access Home Page', () => {
+        it('Access Instagram', () => {
             footer.accessSocial('Instagram')
         });
-        it('Access About Page', () => {
+        it('Access LinkedIn', () => {
             footer.accessSocial('Linkedin')
         });
     });
