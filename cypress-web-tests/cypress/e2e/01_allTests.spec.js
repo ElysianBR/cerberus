@@ -1,1 +1,2 @@
-import './02_Home.spec'
+import './02_Header.spec'
+import './03_Footer.spec'

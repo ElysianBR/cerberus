@@ -3,11 +3,15 @@ const locators = {
         inputEmail: '#user-name',
         inputPassword: '#password'
     },
-    GENERAL: {
-        homeBtn: 'a[href="#home"]',
-        homeValidation: 'a[href="#home"]',
-        aboutBtn: 'a[href="#about"]',
-        contactBtn: 'a[href="#contact"]',
+    HEADER: {
+        homeBtn: '[data-testid="section-button-home"]',
+        aboutBtn: '[data-testid="section-button-about"]',
+        contactBtn: '[data-testid="section-button-contact"]',
+    },
+    FOOTER: {
+        InstagramBtn: '[data-testid="InstagramIcon"]',
+        linkedinBtn: '[data-testid="LinkedInIcon"]',
+        mailBtn: '[data-testid="MailOutlineIcon"]',
     }
 }
 
