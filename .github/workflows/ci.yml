@@ -7,25 +7,6 @@ on:
     - cron: '0 15 * * *'
 
 jobs:
-#   api-tests:
-#     runs-on: ubuntu-latest
-
-#     steps:
-#     - uses: actions/checkout@v2
-
-#     - name: Configuração do Node.js
-#       uses: actions/setup-node@v2
-#       with:
-#         node-version: '20.9.0'
-
-#     - name: Instalação de Dependências (API)
-#       run: npm install
-#       working-directory: ./cy-api-tests
-
-#     - name: Executar Testes de API
-#       run: npm run cy:run
-#       working-directory: ./cy-api-tests
-
   ui-tests:
     runs-on: ubuntu-latest
 
@@ -45,15 +26,24 @@ jobs:
       run: npm run cy:run
       working-directory: ./cypress-web-tests
 
-    # Upload Mochawesome report
+    - name: Gerar Relatório Cypress
+      run: npm run generate-report
+      working-directory: ./cypress-web-tests
+
     - name: Upload Mochawesome Report
       uses: actions/upload-artifact@v4
       if: always()
       with:
         name: mochawesome-report
-        path: cypress-web-tests/cypress/reports
+        path: ./cypress-web-tests/cypress/reports
 
-    # Download Mochawesome Report
+    - name: Publicar Resumo do Cypress
+      run: |
+        npx cypress run --reporter json > cypress-web-tests/cypress/reports/results.json
+        npx mochawesome-merge cypress-web-tests/cypress/reports/*.json > cypress-web-tests/cypress/reports/merged-report.json
+        npx marge cypress-web-tests/cypress/reports/merged-report.json --reportDir cypress-web-tests/cypress/reports --inline
+      working-directory: ./cypress-web-tests
+
     - name: Download Mochawesome Report
       uses: actions/download-artifact@v4
       with:
