@@ -44,10 +44,18 @@ jobs:
     - name: Executar Testes de UI
       run: npm run cy:run
       working-directory: ./cypress-web-tests
-      
-    - name: Upload Cypress screenshots
+
+    # Upload Mochawesome report
+    - name: Upload Mochawesome Report
       uses: actions/upload-artifact@v4
       if: always()
       with:
-        name: cypress-screenshots
-        path: cypress-web-tests/cypress/screenshots
+        name: mochawesome-report
+        path: cypress-web-tests/cypress/reports
+
+    # Download Mochawesome Report
+    - name: Download Mochawesome Report
+      uses: actions/download-artifact@v4
+      with:
+        name: mochawesome-report
+        path: download-mochawesome-report
