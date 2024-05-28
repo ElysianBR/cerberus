@@ -22,12 +22,12 @@ jobs:
       run: npm install
       working-directory: ./cypress-web-tests
 
-    - name: Executar Testes de UI
-      run: npm run cy:run
+    - name: Criar Diretório de Relatórios
+      run: mkdir -p cypress-web-tests/cypress/reports
       working-directory: ./cypress-web-tests
 
-    - name: Gerar Relatório Cypress
-      run: npm run generate-report
+    - name: Executar Testes de UI com Mochawesome
+      run: npx cypress run --reporter mochawesome --reporter-options reportDir=cypress/reports,reportFilename=report.html
       working-directory: ./cypress-web-tests
 
     - name: Upload Mochawesome Report
@@ -36,13 +36,6 @@ jobs:
       with:
         name: mochawesome-report
         path: ./cypress-web-tests/cypress/reports
-
-    - name: Publicar Resumo do Cypress
-      run: |
-        npx cypress run --reporter json > cypress-web-tests/cypress/reports/results.json
-        npx mochawesome-merge cypress-web-tests/cypress/reports/*.json > cypress-web-tests/cypress/reports/merged-report.json
-        npx marge cypress-web-tests/cypress/reports/merged-report.json --reportDir cypress-web-tests/cypress/reports --inline
-      working-directory: ./cypress-web-tests
 
     - name: Download Mochawesome Report
       uses: actions/download-artifact@v4
