@@ -7,6 +7,25 @@ on:
     - cron: '0 15 * * *'
 
 jobs:
+#   api-tests:
+#     runs-on: ubuntu-latest
+
+#     steps:
+#     - uses: actions/checkout@v2
+
+#     - name: Configuração do Node.js
+#       uses: actions/setup-node@v2
+#       with:
+#         node-version: '20.9.0'
+
+#     - name: Instalação de Dependências (API)
+#       run: npm install
+#       working-directory: ./cy-api-tests
+
+#     - name: Executar Testes de API
+#       run: npm run cy:run
+#       working-directory: ./cy-api-tests
+
   ui-tests:
     runs-on: ubuntu-latest
 
@@ -22,23 +41,17 @@ jobs:
       run: npm install
       working-directory: ./cypress-web-tests
 
-    - name: Criar Diretório de Relatórios
-      run: mkdir -p cypress-web-tests/cypress/reports
+    - name: Executar Testes de UI
+      run: npm run cy:run
       working-directory: ./cypress-web-tests
 
-    - name: Executar Testes de UI com Mochawesome
-      run: npx cypress run
-      working-directory: ./cypress-web-tests
-
-    # Upload Mochawesome report
     - name: Upload Mochawesome Report
       uses: actions/upload-artifact@v4
       if: always()
       with:
         name: mochawesome-report
-        path: ./cypress-web-tests/cypress/reports
+        path: cypress-web-tests/cypress/reports
 
-    # Baixar Mochawesome Report
     - name: Download Mochawesome Report
       uses: actions/download-artifact@v4
       with:

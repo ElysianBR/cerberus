@@ -6,8 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "cy:open": "cypress open",
-    "cy:run": "cypress run --reporter mochawesome --reporter-options reportDir=cypress/reports,reportFilename=report.html",
-    "generate-report": "npx mochawesome-merge cypress/reports/*.json > cypress/reports/merged-report.json && npx marge cypress/reports/merged-report.json --reportDir cypress/reports --inline"
+    "cy:run": "cypress run --config video=false  --browser chrome --spec cypress/e2e/01_allTests.spec.js"
   },
   "keywords": [],
   "author": "",
