@@ -45,14 +45,9 @@ jobs:
       run: npm run cy:run
       working-directory: ./cypress-web-tests
       
-    - name: Download Cypress screenshots WEB
-      uses: actions/download-artifact@v4
+    - name: Upload Cypress screenshots
+      uses: actions/upload-artifact@v4
+      if: always()
       with:
         name: cypress-screenshots
-        path: cypress-web-tests/screenshots
-        
-    - name: Download Cypress videos WEB
-      uses: actions/download-artifact@v4
-      with:
-        name: cypress-videos
-        path: cypress-web-tests/videos
+        path: cypress-web-tests/cypress/screenshots
