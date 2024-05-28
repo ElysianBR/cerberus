@@ -45,7 +45,6 @@ jobs:
       run: npm run cy:run
       working-directory: ./cypress-web-tests
 
-    # Upload Mochawesome report
     - name: Upload Mochawesome Report
       uses: actions/upload-artifact@v4
       if: always()
@@ -53,9 +52,15 @@ jobs:
         name: mochawesome-report
         path: cypress-web-tests/cypress/reports
 
-    # Download Mochawesome Report
     - name: Download Mochawesome Report
       uses: actions/download-artifact@v4
       with:
         name: mochawesome-report
         path: download-mochawesome-report
+
+    - name: Publicar Resumo do Cypress
+      run: |
+        npx cypress run --reporter json > cypress-web-tests/cypress/reports/results.json
+        npx mochawesome-merge cypress-web-tests/cypress/reports/*.json > cypress-web-tests/cypress/reports/merged-report.json
+        npx marge cypress-web-tests/cypress/reports/merged-report.json --reportDir cypress-web-tests/cypress/reports --inline
+      working-directory: ./cypress-web-tests
