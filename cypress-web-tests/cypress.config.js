@@ -10,6 +10,12 @@ module.exports = defineConfig({
   defaultCommandTimeout: 15000,
   numTestsKeptInMemory: 0,
   reporter: 'cypress-mochawesome-reporter',
+  reporterOptions: {
+    "reportDir": "cypress/reports",
+    "overwrite": false,
+    "html": true,
+    "json": true
+  },
   e2e: {
     setupNodeEvents(on, config) {
       require('cypress-mochawesome-reporter/plugin')(on);
