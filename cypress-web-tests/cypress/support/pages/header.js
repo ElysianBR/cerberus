@@ -14,6 +14,14 @@ class Header {
       cy.get(locators.HEADER.contactBtn).should('exist', 'be.visible').click();
       cy.url().should('eq', 'https://elysian.com.br/#contact')
     }
+    if (section === 'Login') {
+      cy.get(locators.HEADER.loginBtn).should('exist', 'be.visible').click();
+      cy.url().should('eq', 'https://elysian.com.br/login')
+    }
+    if (section === 'Plan') {
+      cy.get(locators.HEADER.planBtn).should('exist', 'be.visible').click();
+      cy.url().should('eq', 'https://elysian.com.br/#plan')
+    }
   }
 }
 

@@ -15,5 +15,11 @@ describe('Header Page', () => {
         it('Access Contact Page', () => {
             header.sectionSelection('Contact')
         });
+        it('Access Plan Page', () => {
+            header.sectionSelection('Plan')
+        });
+        it('Access Login Page', () => {
+            header.sectionSelection('Login')
+        });
     });
 });
