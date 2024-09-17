@@ -20,7 +20,7 @@ class Header {
     }
     if (section === 'Plan') {
       cy.get(locators.HEADER.planBtn).should('exist', 'be.visible').click();
-      cy.url().should('eq', 'https://elysian.com.br/#plan')
+      cy.url().should('eq', 'https://elysian.com.br/#plans')
     }
   }
 }
