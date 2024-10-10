@@ -14,6 +14,7 @@ const locators = {
         InstagramBtn: '[data-testid="InstagramIcon"]',
         linkedinBtn: '[data-testid="LinkedInIcon"]',
         mailBtn: '[data-testid="MailOutlineIcon"]',
+        whatsBtn: '[data-testid="WhatsAppIcon"]',
     }
 }
 

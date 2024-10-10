@@ -12,5 +12,11 @@ describe('Footer Page', () => {
         it('Access LinkedIn', () => {
             footer.accessSocial('Linkedin')
         });
+        it.skip('Access Mail', () => {
+            footer.accessSocial('Mail')
+        });
+        it('Access Whats', () => {
+            footer.accessSocial('Whats')
+        });
     });
 });
