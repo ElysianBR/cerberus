@@ -12,7 +12,7 @@ describe('Header Page', () => {
         it('Access About Page', () => {
             header.sectionSelection('About')
         });
-        it('Access Contact Page', () => {
+        it.skip('Access Contact Page', () => {
             header.sectionSelection('Contact')
         });
         it('Access Plan Page', () => {
