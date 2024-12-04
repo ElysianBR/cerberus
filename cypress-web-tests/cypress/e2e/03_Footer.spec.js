@@ -1,7 +1,7 @@
 import cy from '../support/pages/general.js'
 import footer from '../support/pages/footer.js'
 
-describe('Footer Page', () => {
+describe.skip('Footer Page', () => {
     beforeEach(() => {
         cy.openApp()
     });

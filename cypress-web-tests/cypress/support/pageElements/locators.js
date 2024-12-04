@@ -1,7 +1,14 @@
 const locators = {
     LOGIN: {
-        inputEmail: '#user-name',
+        inputEmail: '#email',
         inputPassword: '#password'
+    },
+    SIGNUP: {
+        inputName: '#name',
+        inputSurname: '#lastName',
+        inputEmail: '#email',
+        inputPassword: '#password',
+        createAccountBtn: 'button[type="submit"]',
     },
     HEADER: {
         homeBtn: '[data-testid="section-button-home"]',
